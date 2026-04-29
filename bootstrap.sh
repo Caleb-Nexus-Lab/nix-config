@@ -83,7 +83,7 @@ sudo apt update && sudo apt install -y \
   tftpd-hpa \
   fonts-noto-core \
   fonts-noto-ui-core \
-  zsh
+  zsh \
   git \
   curl
 
