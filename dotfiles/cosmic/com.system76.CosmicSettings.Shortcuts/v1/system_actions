@@ -1,0 +1,3 @@
+{
+    Terminal: "/opt/Tabby/tabby --no-sandbox %U",
+}
