@@ -118,11 +118,10 @@
     oh-my-zsh = {
       enable = true;
       # powerlevel10k est déclaré comme thème custom ci-dessous
-      theme = "powerlevel10k/powerlevel10k";
+      theme = "";
       plugins = [
         "git"
         "sudo"
-        "apt"
         "docker"
         "docker-compose"
       ];
