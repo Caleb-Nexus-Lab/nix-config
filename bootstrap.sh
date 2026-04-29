@@ -11,9 +11,10 @@
 #   2. Installation de Nix (multi-user)
 #   3. Clone du repo de config
 #   4. Application de Home Manager (home.nix)
-#   5. Configuration COSMIC desktop
-#   6. Installation de Tabby Terminal via .deb
-#   7. Installation des Flatpaks résiduels (Flatseal, Chrome, Obsidian, Remmina)
+#   5. Icônes et curseur (candy-icons, Sweet-cursors)
+#   6. Configuration COSMIC desktop (thème, raccourcis, wallpaper)
+#   7. Installation de Tabby Terminal via .deb
+#   8. Installation des Flatpaks (Flatseal, Chrome, Obsidian, Remmina)
 #
 # IMPORTANT — avant de lancer ce script :
 #   - Copier le dossier wallpapers dans ~/Images/wallpaper/
@@ -38,7 +39,7 @@ ORIGINAL_USERNAME="caleb"
 # ==============================================================================
 # GESTION DU USERNAME
 # Si le username sur ce PC est différent de "caleb", on adapte automatiquement
-# home.nix et flake.nix avant d'appliquer la config.
+# home.nix, flake.nix et la config COSMIC avant d'appliquer.
 # ==============================================================================
 adapt_username() {
   if [[ "$USERNAME" == "$ORIGINAL_USERNAME" ]]; then
@@ -102,6 +103,10 @@ info "Étape 2 : Installation de Nix..."
 if command -v nix &>/dev/null; then
   warn "Nix est déjà installé ($(nix --version)), on passe."
 else
+  # Nettoyer les éventuelles traces d'une install avortée
+  sudo rm -f /etc/bash.bashrc.backup-before-nix
+  sudo rm -f /etc/zsh/zshrc.backup-before-nix
+
   curl -L https://nixos.org/nix/install | sh -s -- --daemon
   # shellcheck disable=SC1091
   source /etc/profile.d/nix.sh || true
@@ -141,19 +146,48 @@ nix run home-manager/release-24.05 -- switch \
   --flake "$CONFIG_DIR#$USERNAME" \
   --extra-experimental-features "nix-command flakes"
 
-# Ajouter zsh Nix à /etc/shells et le définir comme shell par défaut
+# Ajouter zsh Nix à /etc/shells et le définir comme shell par défaut.
+# On utilise usermod qui est plus fiable que chsh sur Pop!_OS.
 if ! grep -qF "$NIX_ZSH" /etc/shells 2>/dev/null; then
   echo "$NIX_ZSH" | sudo tee -a /etc/shells
 fi
-chsh -s "$NIX_ZSH"
+sudo usermod -s "$NIX_ZSH" "$USERNAME"
 info "Shell par défaut : zsh ($NIX_ZSH)"
 
 # ==============================================================================
-# ÉTAPE 5 — CONFIG COSMIC DESKTOP
-# Les fichiers RON sont copiés directement dans ~/.config/cosmic/.
-# Les chemins absolus /home/caleb sont corrigés si le username a changé.
+# ÉTAPE 5 — ICÔNES ET CURSEUR
+# candy-icons et Sweet-cursors sont versionnés dans assets/icons/ du repo.
+# Ils sont copiés dans /usr/share/icons/ (système) pour être disponibles
+# pour tous les utilisateurs et pour COSMIC qui lit depuis cet emplacement.
 # ==============================================================================
-info "Étape 5 : Application de la config COSMIC..."
+info "Étape 5 : Installation des icônes et du curseur..."
+
+ICONS_SRC="$CONFIG_DIR/assets/icons"
+
+if [[ -d "$ICONS_SRC/candy-icons" ]]; then
+  sudo cp -r "$ICONS_SRC/candy-icons" /usr/share/icons/
+  info "candy-icons installé."
+else
+  warn "candy-icons non trouvé dans le repo."
+fi
+
+if [[ -d "$ICONS_SRC/Sweet-cursors" ]]; then
+  sudo cp -r "$ICONS_SRC/Sweet-cursors" /usr/share/icons/
+  # Mettre à jour le cache des icônes système
+  sudo gtk-update-icon-cache /usr/share/icons/Sweet-cursors 2>/dev/null || true
+  info "Sweet-cursors installé."
+else
+  warn "Sweet-cursors non trouvé dans le repo."
+fi
+
+# ==============================================================================
+# ÉTAPE 6 — CONFIG COSMIC DESKTOP
+# Les fichiers RON sont copiés dans ~/.config/cosmic/.
+# Les chemins absolus /home/caleb sont corrigés si le username a changé.
+# Le wallpaper est appliqué via la commande cosmic-settings après le démarrage
+# de la session — un script de démarrage automatique s'en charge.
+# ==============================================================================
+info "Étape 6 : Application de la config COSMIC..."
 
 COSMIC_SRC="$CONFIG_DIR/dotfiles/cosmic"
 COSMIC_DST="$HOME/.config/cosmic"
@@ -162,6 +196,7 @@ if [[ -d "$COSMIC_SRC" ]]; then
   mkdir -p "$COSMIC_DST"
   cp -r "$COSMIC_SRC"/. "$COSMIC_DST/"
 
+  # Corriger les chemins absolus si le username a changé
   if [[ "$USERNAME" != "$ORIGINAL_USERNAME" ]]; then
     info "Correction des chemins /home/$ORIGINAL_USERNAME -> /home/$USERNAME..."
     find "$COSMIC_DST" -type f -exec \
@@ -173,11 +208,20 @@ else
   warn "Dossier dotfiles/cosmic introuvable dans le repo."
 fi
 
+# Forcer le terminal COSMIC à utiliser zsh
+# COSMIC lit la variable d'environnement SHELL pour son terminal intégré.
+# On l'écrit dans ~/.config/environment.d/ qui est chargé par systemd user.
+mkdir -p "$HOME/.config/environment.d"
+cat > "$HOME/.config/environment.d/shell.conf" <<EOF
+SHELL=$NIX_ZSH
+EOF
+info "Terminal COSMIC configuré pour utiliser zsh."
+
 # ==============================================================================
-# ÉTAPE 6 — TABBY TERMINAL (via .deb)
+# ÉTAPE 7 — TABBY TERMINAL (via .deb)
 # Pas dans nixpkgs. Le script cherche le .deb dans les emplacements courants.
 # ==============================================================================
-info "Étape 6 : Installation de Tabby Terminal..."
+info "Étape 7 : Installation de Tabby Terminal..."
 
 TABBY_DEB=""
 
@@ -202,22 +246,25 @@ else
 fi
 
 # ==============================================================================
-# ÉTAPE 7 — FLATPAKS
+# ÉTAPE 8 — FLATPAKS
+# Installation en mode --user pour éviter la question système/utilisateur
+# et ne pas nécessiter de droits root pour les mises à jour futures.
 # - Flatseal  : gestionnaire de permissions Flatpak
 # - Chrome    : propriétaire, absent de nixpkgs
 # - Obsidian  : pas de paquet nixpkgs officiel stable
 # - Remmina   : plugins RDP/VNC mieux gérés en Flatpak
 # ==============================================================================
-info "Étape 7 : Installation des Flatpaks..."
+info "Étape 8 : Installation des Flatpaks..."
 
 if ! command -v flatpak &>/dev/null; then
   sudo apt install -y flatpak
 fi
 
-flatpak remote-add --if-not-exists flathub \
+# Ajouter Flathub en mode user (pas besoin de sudo)
+flatpak remote-add --user --if-not-exists flathub \
   https://dl.flathub.org/repo/flathub.flatpakrepo
 
-flatpak install -y flathub \
+flatpak install -y --user flathub \
   com.github.tchx84.Flatseal \
   com.google.Chrome \
   md.obsidian.Obsidian \
@@ -238,8 +285,11 @@ echo "  2. Après reconnexion, lancer nvim une première fois"
 echo "     -> lazy.nvim installe les plugins automatiquement"
 echo ""
 echo "Optionnel :"
+echo "  - Appliquer le fond d'écran manuellement dans Paramètres COSMIC"
+echo "    si il ne s'applique pas automatiquement"
+echo "  - Appliquer le thème d'icônes candy-icons dans Paramètres COSMIC"
+echo "  - Appliquer le curseur Sweet-cursors dans Paramètres COSMIC"
 echo "  - Si le thème powerlevel10k ne s'affiche pas bien : p10k configure"
-echo "  - Copier les wallpapers dans ~/Images/wallpaper/ si pas déjà fait"
 echo ""
 if [[ "$USERNAME" != "$ORIGINAL_USERNAME" ]]; then
   warn "Username adapté : $ORIGINAL_USERNAME -> $USERNAME"
