@@ -1,5 +1,14 @@
 version: 8
-profiles: []
+profiles:
+  - type: local
+    options:
+      command: /home/caleb/.nix-profile/bin/zsh
+      args:
+        - '--login'
+      env: {}
+    id: >-
+      local:custom:Valeurs-utilisateur-par-defaut:34bca88c-6175-4a94-80e8-91a2355ee48c
+    name: default
 groups: []
 configSync:
   parts: {}
@@ -222,7 +231,8 @@ terminal:
       - '#ffffff'
   fontSize: 20
   font: JetBrainsMono Nerd Font
-  profile: local:nix-zsh
+  profile: >-
+    local:custom:Valeurs-utilisateur-par-defaut:34bca88c-6175-4a94-80e8-91a2355ee48c
   ligatures: true
   cursor: beam
 ssh:
@@ -283,10 +293,6 @@ profileDefaults:
   ssh:
     disableDynamicTitle: true
     type: ssh
-  local:
-    shell: /home/caleb/.nix-profile/bin/zsh
-    args:
-      - -l
 profileBlacklist: []
 backgroundPlugin:
   backgrounds: []
