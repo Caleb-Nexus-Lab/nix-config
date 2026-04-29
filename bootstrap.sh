@@ -85,6 +85,7 @@ sudo apt update && sudo apt install -y \
   fonts-noto-ui-core \
   zsh \
   git \
+  tio \
   curl
 
 info "Ajout de $USERNAME aux groupes libvirt et docker..."
