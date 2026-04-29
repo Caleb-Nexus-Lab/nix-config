@@ -27,7 +27,7 @@ error()   { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 [[ "$EUID" -eq 0 ]] && error "Ne pas lancer ce script en root. Lance-le en tant qu'utilisateur normal."
 
 # --- Variables ---
-REPO_URL="https://github.com/TON_USER/nix-config.git"  # ← Mettre l'URL de ton repo git
+REPO_URL="https://github.com/Caleb-Nexus-Lab/nix-config.git"  # ← Mettre l'URL de ton repo git
 CONFIG_DIR="$HOME/nix-config"
 USERNAME="$(whoami)"
 
