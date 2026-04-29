@@ -1,0 +1,28 @@
+# Nix
+.direnv/
+result
+result-*
+
+# Home Manager — généré automatiquement, ne pas versionner
+home-manager-generation
+
+# Tabby — données runtime à exclure, on ne garde que config.yaml
+dotfiles/tabby/Cookies
+dotfiles/tabby/Cookies-journal
+dotfiles/tabby/SingletonLock
+dotfiles/tabby/SingletonCookie
+dotfiles/tabby/blob_storage/
+dotfiles/tabby/Crashpad/
+dotfiles/tabby/DawnWebGPUCache/
+dotfiles/tabby/Shared\ Dictionary/
+dotfiles/tabby/sentry/
+dotfiles/tabby/Trust\ Tokens
+dotfiles/tabby/window.json
+dotfiles/tabby/Preferences
+dotfiles/tabby/plugins/node_modules/
+
+# btop log
+dotfiles/btop/btop.log
+
+# Neovim — le lock est versionné mais pas le cache
+dotfiles/nvim/init.lua.bak

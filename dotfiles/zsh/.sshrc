@@ -1,0 +1,36 @@
+# --- 1. PROMPT INTELLIGENT ---
+# Vert pour l'utilisateur, Bleu pour le dossier, et un '$' qui devient rouge si la dernière commande a échoué
+export PS1="\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\$(if [ \$? -ne 0 ]; then echo \" \[\e[31m\]!\[\e[m\]\"; fi)\$ "
+
+# --- 2. ALIAS DE SURVIE ---
+alias ls='ls --color=auto'
+alias ll='ls -alFh'      # Liste détaillée avec tailles lisibles (KB, MB)
+alias la='ls -A'         # Affiche les fichiers cachés
+alias l='ls -CF'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Alias spécifiques DevOps / Réseau
+alias haconf='sudo nvim /etc/haproxy/haproxy.cfg'
+alias hacheck='sudo haproxy -c -f /etc/haproxy/haproxy.cfg'
+alias hares='sudo systemctl restart haproxy'
+alias ipbr='ip -c -br a'  # IP Brief : affiche tes interfaces et IPs en une ligne propre
+alias ports='ss -tulanp'  # Voir tous les ports ouverts et qui les utilise
+
+# --- 3. HISTORIQUE MUSCLÉ ---
+export HISTCONTROL=ignoreboth  # Ne pas stocker les doublons ou les commandes commençant par un espace
+export HISTSIZE=10000          # Garder 10 000 lignes en mémoire
+shopt -s histappend            # Ajouter à l'historique au lieu de l'écraser
+
+# --- 4. NAVIGATION & ÉDITION ---
+export EDITOR='nvim'           # Parce qu'on a bossé ton config nvim pour ça !
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# --- 5. FONCTION PRATIQUE ---
+# Crée un dossier et entre dedans immédiatement : 'mkcd mon_projet'
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}

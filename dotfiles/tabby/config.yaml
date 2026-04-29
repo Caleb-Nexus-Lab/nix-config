@@ -1,0 +1,302 @@
+version: 8
+profiles: []
+groups: []
+configSync:
+  parts: {}
+hotkeys:
+  toggle-window:
+    - Ctrl-Space
+  copy-current-path: []
+  ctrl-c:
+    - Ctrl-C
+  copy:
+    - Ctrl-Shift-C
+  paste:
+    - Ctrl-Shift-V
+    - Shift-Insert
+  select-all:
+    - Ctrl-Shift-A
+  clear: []
+  zoom-in:
+    - Ctrl-=
+    - Ctrl-Shift-=
+  zoom-out:
+    - Ctrl--
+    - Ctrl-Shift--
+  reset-zoom:
+    - Ctrl-0
+  home:
+    - Home
+  end:
+    - End
+  previous-word:
+    - Ctrl-Left
+  next-word:
+    - Ctrl-Right
+  delete-previous-word:
+    - Ctrl-Backspace
+  delete-line:
+    - Ctrl-Shift-Backspace
+  delete-next-word:
+    - Ctrl-Delete
+  search:
+    - Ctrl-Shift-F
+  pane-focus-all:
+    - Ctrl-Shift-I
+  focus-all-tabs:
+    - Ctrl-Alt-Shift-I
+  scroll-to-top:
+    - Ctrl-PageUp
+  scroll-page-up:
+    - Alt-PageUp
+  scroll-up:
+    - Ctrl-Shift-Up
+  scroll-down:
+    - Ctrl-Shift-Down
+  scroll-page-down:
+    - Alt-PageDown
+  scroll-to-bottom:
+    - Ctrl-PageDown
+  restart-telnet-session: []
+  restart-ssh-session: []
+  launch-winscp: []
+  settings-tab: {}
+  settings:
+    - Ctrl-,
+  serial:
+    - Alt-K
+  restart-serial-session: []
+  new-tab:
+    - Ctrl-Shift-T
+  new-window:
+    - Ctrl-Shift-N
+  profile: {}
+  profile-selectors: {}
+  group-selectors: {}
+  toggle-fullscreen:
+    - F11
+  close-tab:
+    - Ctrl-Shift-W
+  reopen-tab:
+    - Ctrl-Shift-Z
+  toggle-last-tab: []
+  rename-tab:
+    - Ctrl-Shift-R
+  next-tab:
+    - Ctrl-Shift-Right
+    - Ctrl-Tab
+  previous-tab:
+    - Ctrl-Shift-Left
+    - Ctrl-Shift-Tab
+  move-tab-left:
+    - Ctrl-Shift-PageUp
+  move-tab-right:
+    - Ctrl-Shift-PageDown
+  rearrange-panes:
+    - Ctrl-Shift
+  duplicate-tab: []
+  restart-tab: []
+  reconnect-tab: []
+  disconnect-tab: []
+  explode-tab:
+    - Ctrl-Shift-.
+  combine-tabs:
+    - Ctrl-Shift-,
+  tab-1:
+    - Alt-1
+  tab-2:
+    - Alt-2
+  tab-3:
+    - Alt-3
+  tab-4:
+    - Alt-4
+  tab-5:
+    - Alt-5
+  tab-6:
+    - Alt-6
+  tab-7:
+    - Alt-7
+  tab-8:
+    - Alt-8
+  tab-9:
+    - Alt-9
+  tab-10:
+    - Alt-0
+  tab-11: []
+  tab-12: []
+  tab-13: []
+  tab-14: []
+  tab-15: []
+  tab-16: []
+  tab-17: []
+  tab-18: []
+  tab-19: []
+  tab-20: []
+  split-right:
+    - Ctrl-Shift-S
+  split-bottom:
+    - Ctrl-Shift-D
+  split-left: []
+  split-top: []
+  pane-nav-right:
+    - Ctrl-Alt-Right
+  pane-nav-down:
+    - Ctrl-Alt-Down
+  pane-nav-up:
+    - Ctrl-Alt-Up
+  pane-nav-left:
+    - Ctrl-Alt-Left
+  pane-nav-previous:
+    - Ctrl-Alt-[
+  pane-nav-next:
+    - Ctrl-Alt-]
+  pane-nav-1: []
+  pane-nav-2: []
+  pane-nav-3: []
+  pane-nav-4: []
+  pane-nav-5: []
+  pane-nav-6: []
+  pane-nav-7: []
+  pane-nav-8: []
+  pane-nav-9: []
+  pane-maximize:
+    - Ctrl-Alt-Enter
+  pane-increase-vertical: []
+  pane-decrease-vertical: []
+  pane-increase-horizontal: []
+  pane-decrease-horizontal: []
+  close-pane: []
+  switch-profile:
+    - Ctrl-Alt-T
+  profile-selector:
+    - Ctrl-Shift-E
+  command-selector:
+    - Ctrl-Shift-P
+terminal:
+  searchOptions: {}
+  colorScheme:
+    name: TokyoNight
+    foreground: '#c0caf5'
+    background: '#1a1b26'
+    cursor: '#c0caf5'
+    colors:
+      - '#15161e'
+      - '#f7768e'
+      - '#9ece6a'
+      - '#e0af68'
+      - '#7aa2f7'
+      - '#bb9af7'
+      - '#7dcfff'
+      - '#a9b1d6'
+      - '#414868'
+      - '#f7768e'
+      - '#9ece6a'
+      - '#e0af68'
+      - '#7aa2f7'
+      - '#bb9af7'
+      - '#7dcfff'
+      - '#c0caf5'
+  bell: visual
+  customColorSchemes: []
+  lightColorScheme:
+    name: Tabby Default Light
+    foreground: '#4d4d4c'
+    background: '#ffffff'
+    cursor: '#4d4d4c'
+    colors:
+      - '#000000'
+      - '#c82829'
+      - '#718c00'
+      - '#eab700'
+      - '#4271ae'
+      - '#8959a8'
+      - '#3e999f'
+      - '#ffffff'
+      - '#000000'
+      - '#c82829'
+      - '#718c00'
+      - '#eab700'
+      - '#4271ae'
+      - '#8959a8'
+      - '#3e999f'
+      - '#ffffff'
+  fontSize: 20
+  font: JetBrainsMono Nerd Font
+  profile: local:binzsh
+  ligatures: true
+  cursor: beam
+ssh:
+  knownHosts:
+    - host: 192.168.122.253
+      port: 22
+      type: ssh-rsa
+      digest: ojurQ0t6Ui+hJuZoxdZoWE8onGUx7cdLvGm4ervjPLQ=
+    - host: 192.168.122.252
+      port: 22
+      type: ssh-rsa
+      digest: icZCldIaVhq86IZ7JaCfSazXyjB+YWbDNcpG0aSYIxg=
+    - host: 192.168.122.100
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: agqlbF1ozLeKG/UOsgp+0quVkG/Lnk/v3QIlvNKGMu0=
+    - host: 192.168.122.126
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: X29UkFzRN+KbqdNSwO4N41Re9KCwQkoLvoZuN6GvY7A=
+    - host: 192.168.122.180
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: bVwKs2USMbn0n0hfVVGRxqIE9uhpEic4lyDVXLKjxd4=
+    - host: 192.168.122.146
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: VYDYDLAhA74sXoKAzR/xRzXDRZ9K6Wgvhig6E1NT4nU=
+    - host: 192.168.122.145
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: VYDYDLAhA74sXoKAzR/xRzXDRZ9K6Wgvhig6E1NT4nU=
+    - host: 192.168.122.47
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: RrNArbesJowV/YsvijwJFrMGsIcBpm6i2uojReyUfDE=
+    - host: 192.168.122.148
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: RrNArbesJowV/YsvijwJFrMGsIcBpm6i2uojReyUfDE=
+    - host: 192.168.122.77
+      port: 22
+      type: ecdsa-sha2-nistp256
+      digest: juibLW7iGbHPEdKnjmzApydrP2qHe9qPBnjSQTKYAcY=
+clickableLinks: {}
+accessibility: {}
+appearance:
+  vibrancy: true
+  opacity: 0.4
+  css: ''
+hacks: {}
+providerBlacklist: []
+commandBlacklist: []
+language: fr-FR
+enableWelcomeTab: false
+pluginBlacklist: []
+profileDefaults:
+  ssh:
+    disableDynamicTitle: true
+    type: ssh
+profileBlacklist: []
+backgroundPlugin:
+  backgrounds: []
+  backgroundOpacity: 82
+  backgroundBlur: 5
+  backgroundFullscreenType: contain
+  backgroundShowType: float
+  backgroundMode: advanced
+  uiFontEnabled: true
+  uiFontFamily: JetBrainsMono Nerd Font
+vault:
+  version: 1
+  contents: >-
+    dxaTBTaoD3ot7Eq0HBl8jrysU2WQnYoP005+QSUmQ7vVyyJBpa9YbXpZDYEKH/bK4GWAX8GCR3yBvkX+Xp9tYtNFND29O8gzh0EsBgfQik/yh95iF5aBko4jYsLLFjgPiuR7sxM9vjmpVZL1EOblturROuvSGm4W6B9knZzXqlwdoHcEqF3t6MzFsrD/BjR6UPShnjlwczTNoCSvXc/81gbSZDhXYYokgExvirp6p9/Sv1QtJMB/SpkKOWNJtp9+MDPCWq9CQfE18piN0UZBniPRQdm376xTJbgSTgWQeR7F/rZDS3n+s6yUZ8Z+rUG75tF7s3w0iFoqvNW/wy0vtD+lL7XP0iyG3AREM+1Xbcuj8ZNVEzNVSVry+oBplpo1pr1OHWjNUBee/sDNfs7fxfyyOtFJAH14cgu5UGnkrcARjJSqZAGPR3TQCglJN5KIL+bMljLFqUNLQt45enjZxCLk6m/v7lRedlZyHYVBRxvVeKZEWgZghi4AkKQz17/9ATq8b01f03hz9Kw0pGpspCaNq461JTGKPo8PKNsgeK0P93wmvLVboQjw5hSeoBWScrZkrAbStSBK5yFie924Pd/ZdILC4BK9DJtzxEzHICRxJJgMHMtK1TsWwAhnENybG/bywFNg87lTwyxYVKK1tIuIO+N521Z2gQWA49zNGuF7ajZgY9zoTFeioLGqhAvfn2UvhB+sTyiyLkpilB74FbNn1mNy9RK24o04m9kJXBGR2yC7Fkmg1VTRO55j1WYuea98C4JgAnUvsvtin2MajWOcG+wr/psrFxeQJAm7ikPYKcu0tKXmUZ8f3r7R25nEafFlBpqYeScMtLYqlF+rjgqbg7zAuMMmahPEgD85XKMMM8fw1PrURmFHmoZIb4KKjuomG4lfBKTZyce18hQiXK8zx4JVYWb43MTNdRKQbF7Nux1LiFUOGjVBDVR2EDG2hNW4TJKvF1pIfT80CoqvRwqrCSzfgXvkmIwZEWhxA1bBMCINx97C0yLdeevg/rnX86I3Mf1ZbauM4hsKOY3fFs2qnJWx5zFJYUTR9gsg2eUCxNiZSXIxA42KkKthWJJ5
+  keySalt: 5d739222b7a3bf5c
+  iv: 107880baaaece6bdb3de6e8ad5e403ae
+recoverTabs: false
