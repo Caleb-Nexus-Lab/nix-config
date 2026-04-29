@@ -1,11 +1,5 @@
 version: 8
-profiles:
-  - type: local
-    name: zsh (Nix)
-    id: local:nix-zsh
-    shell: /home/caleb/.nix-profile/bin/zsh
-    args:
-      - -l
+profiles:[]
 groups: []
 configSync:
   parts: {}
@@ -289,6 +283,10 @@ profileDefaults:
   ssh:
     disableDynamicTitle: true
     type: ssh
+  local:
+    shell: /home/caleb/.nix-profile/bin/zsh
+    args:
+      - -l
 profileBlacklist: []
 backgroundPlugin:
   backgrounds: []
