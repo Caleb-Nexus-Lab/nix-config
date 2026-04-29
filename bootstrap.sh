@@ -201,6 +201,9 @@ if [[ -d "$COSMIC_SRC" ]]; then
     info "Correction des chemins /home/$ORIGINAL_USERNAME -> /home/$USERNAME..."
     find "$COSMIC_DST" -type f -exec \
       sed -i "s|/home/$ORIGINAL_USERNAME|/home/$USERNAME|g" {} +
+      # Corriger aussi la config Tabby
+    sed -i "s|/home/$ORIGINAL_USERNAME|/home/$USERNAME|g" \
+      "$HOME/.config/tabby/config.yaml"
   fi
 
   info "Config COSMIC appliquée."

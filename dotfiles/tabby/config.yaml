@@ -1,5 +1,9 @@
 version: 8
-profiles: []
+profiles:
+  - type: local
+    name: zsh (Nix)
+    id: local:nix-zsh
+    shell: /home/caleb/.nix-profile/bin/zsh
 groups: []
 configSync:
   parts: {}
@@ -222,7 +226,7 @@ terminal:
       - '#ffffff'
   fontSize: 20
   font: JetBrainsMono Nerd Font
-  profile: local:binzsh
+  profile: local:nix-zsh
   ligatures: true
   cursor: beam
 ssh:
