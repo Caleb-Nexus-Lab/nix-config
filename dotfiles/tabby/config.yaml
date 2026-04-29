@@ -4,6 +4,8 @@ profiles:
     name: zsh (Nix)
     id: local:nix-zsh
     shell: /home/caleb/.nix-profile/bin/zsh
+    args:
+      - -l
 groups: []
 configSync:
   parts: {}
