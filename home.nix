@@ -33,7 +33,6 @@
     bat                        # 'cat' avec coloration syntaxique
 
     # --- ÉDITEUR ---
-    neovim                     # Éditeur principal
 
     # --- OUTILS RÉSEAU & INFRA ---
     ansible                    # Automatisation infra
