@@ -1,0 +1,28 @@
+# =============================================================================
+# DIFF À APPLIQUER DANS home.nix
+# =============================================================================
+#
+# Une seule ligne à ajouter dans la liste `imports` existante.
+# Hyprland et COSMIC sont deux sessions indépendantes — aucun conflit.
+#
+# AVANT :
+# -------
+# { config, pkgs, lib, ... }:
+# {
+#   imports = [
+#     # ... tes imports actuels ...
+#   ];
+#
+# APRÈS :
+# -------
+# { config, pkgs, lib, ... }:
+# {
+#   imports = [
+#     ./modules/hyprland/default.nix    # ← ajouter cette ligne
+#     # ... tes imports actuels ...
+#   ];
+#
+# =============================================================================
+# C'est tout. Le reste (paquets, services, variables) est entièrement géré
+# dans modules/hyprland/.
+# =============================================================================

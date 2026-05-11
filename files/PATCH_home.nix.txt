@@ -1,0 +1,64 @@
+# =============================================================================
+# PATCH home.nix — section à ajouter / modifier
+# =============================================================================
+#
+# 1. Dans la section `imports = [ ... ]`, ajouter :
+#
+#    imports = [
+#      ./hyprland/default.nix    # <-- ajouter cette ligne
+#    ];
+#
+#
+# 2. Si tu utilises un flake.nix, t'assurer que home-manager reçoit bien
+#    le bon pkgs. Exemple minimal de flake.nix pour Pop!_OS (système non-NixOS) :
+#
+# {
+#   inputs = {
+#     nixpkgs.url      = "github:nixos/nixpkgs/nixpkgs-unstable";
+#     home-manager = {
+#       url = "github:nix-community/home-manager";
+#       inputs.nixpkgs.follows = "nixpkgs";
+#     };
+#   };
+#
+#   outputs = { self, nixpkgs, home-manager, ... }:
+#   let
+#     system = "x86_64-linux";
+#     pkgs   = nixpkgs.legacyPackages.${system};
+#   in {
+#     homeConfigurations."ton-user@ton-host" = home-manager.lib.homeManagerConfiguration {
+#       inherit pkgs;
+#       modules = [ ./home.nix ];
+#     };
+#   };
+# }
+#
+#
+# 3. Après `home-manager switch`, Hyprland sera disponible en tant que
+#    session dans GDM / SDDM. Pour le sélectionner :
+#    → Au login, cliquer sur l'icône engrenage en bas à droite de GDM
+#    → Choisir "Hyprland" dans la liste
+#    → COSMIC et Hyprland coexistent, chacun reste sélectionnable
+#
+# =============================================================================
+#
+# NOTES IMPORTANTES
+# -----------------
+#
+# • virt-manager / QEMU / libvirt restent gérés par apt — AUCUN conflit
+#   Les windowrules dans hyprland.conf assurent que virt-manager s'ouvre
+#   en fenêtre flottante centrée avec une taille correcte.
+#
+# • docker est géré par apt — pas de conflit non plus.
+#
+# • Si GDM n'est pas installé sur Pop!_OS COSMIC, vérifier :
+#   Pop!_OS 24.04 utilise COSMIC Greeter par défaut.
+#   Pour que Hyprland apparaisse dans le greeter COSMIC :
+#   Le .desktop de session est installé automatiquement par le paquet
+#   hyprland dans /run/current-system/... ou ~/.nix-profile/share/wayland-sessions/
+#   Il faut s'assurer que le greeter scanne ce répertoire.
+#
+#   Solution propre : créer un lien symbolique ou configurer le greeter.
+#   Voir README.md pour les détails.
+#
+# =============================================================================

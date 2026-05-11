@@ -69,16 +69,6 @@
     systemd.enable = true;  # intégration systemd (permet notify-sd, portals, etc.)
   };
 
-  xdg.configFile."hypr/scripts/wallpaper.sh" = {
-    source = ./scripts/wallpaper.sh;
-    executable = true;
-  };
-
-  xdg.configFile."hypr/scripts/power-menu.sh" = {
-    source = ./scripts/power-menu.sh;
-    executable = true;
-  };
-
   # ---------------------------------------------------------------------------
   # XDG Desktop Portals — requis pour screen sharing, file picker, etc.
   # ---------------------------------------------------------------------------

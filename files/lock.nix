@@ -16,10 +16,9 @@
       general = {
         disable_loading_bar = true;
         hide_cursor         = true;
-        grace               = 0;
+        grace               = 0;       # délai de grâce en secondes (0 = immédiat)
         no_fade_in          = false;
         no_fade_out         = false;
-        kb_layout           = "fr";
       };
 
       # -- Fond d'écran -------------------------------------------------------
@@ -27,7 +26,8 @@
       # Remplacer le path si besoin ; `color` est le fallback si l'image est absente.
       background = [{
         monitor = "";                            # "" = tous les moniteurs
-        path        = "$HOME/.cache/current-wallpaper";
+        path    = "screenshot";                  # capture l'écran au moment du lock
+        # path  = "~/Images/wallpaper.jpg";      # ou une image fixe
         blur_size   = 6;
         blur_passes = 3;
         noise       = 0.015;

@@ -37,8 +37,6 @@
 
       # Modules à droite
       modules-right = [
-        "backlight"
-        "bluetooth"
         "pulseaudio"
         "network"
         "cpu"
@@ -46,7 +44,6 @@
         "temperature"
         "battery"
         "tray"
-        "custom/power"
       ];
 
       # -----------------------------------------------------------------------
@@ -165,30 +162,6 @@
         icon-size   = 18;
         spacing     = 8;
         show-passive-items = true;
-      };
-
-      backlight = {
-        format      = "{icon} {percent}%";
-        format-icons = [ "" "" "" "" "" "" "" "" "" ];
-        on-scroll-up   = "brightnessctl set +5%";
-        on-scroll-down = "brightnessctl set 5%-";
-        tooltip = false;
-      };
-
-      bluetooth = {
-        format            = " {status}";
-        format-connected  = " {device_alias}";
-        format-disabled   = "󰂲";
-        tooltip-format    = "{controller_alias} — {controller_address}";
-        tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
-        tooltip-format-enumerate-connected = "  {device_alias}";
-        on-click          = "blueman-manager";
-      };
-
-      "custom/power" = {
-        format   = "⏻";
-        tooltip  = false;
-        on-click = "~/.config/hypr/scripts/power-menu.sh";
       };
     }];
   };
