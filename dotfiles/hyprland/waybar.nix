@@ -182,7 +182,7 @@
         tooltip-format    = "{controller_alias} — {controller_address}";
         tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
         tooltip-format-enumerate-connected = "  {device_alias}";
-        on-click          = "blueman-manager";
+        on-click          = "/usr/bin/blueman-manager";
       };
 
       "custom/power" = {
