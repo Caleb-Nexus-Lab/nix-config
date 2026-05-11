@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ./dotfiles/hyprland/default.nix
+  ];
+
   # ============================================================
   # IDENTITÉ UTILISATEUR
   # À adapter sur le PC pro si le nom d'utilisateur change.
