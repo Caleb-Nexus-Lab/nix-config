@@ -79,6 +79,16 @@
     executable = true;
   };
 
+  xdg.configFile."hypr/scripts/workspace-next.sh" = {
+    source = ./scripts/workspace-next.sh;
+    executable = true;
+  };
+
+  xdg.configFile."hypr/scripts/workspace-prev.sh" = {
+    source = ./scripts/workspace-prev.sh;
+    executable = true;
+  };
+
   # ---------------------------------------------------------------------------
   # XDG Desktop Portals — requis pour screen sharing, file picker, etc.
   # ---------------------------------------------------------------------------
