@@ -15,10 +15,10 @@
     settings = {
       general = {
         disable_loading_bar = true;
-        hide_cursor         = true;
+        hide_cursor         = false;
         grace               = 0;
         no_fade_in          = false;
-        no_fade_out         = false;
+        no_fade_out         = true;
         kb_layout           = "fr";
       };
 
@@ -27,7 +27,7 @@
       # Remplacer le path si besoin ; `color` est le fallback si l'image est absente.
       background = [{
         monitor = "";                            # "" = tous les moniteurs
-        path        = "$HOME/.cache/current-wallpaper";
+        path        = "${config.home.homeDirectory}/.cache/current-wallpaper";
         blur_size   = 6;
         blur_passes = 3;
         noise       = 0.015;

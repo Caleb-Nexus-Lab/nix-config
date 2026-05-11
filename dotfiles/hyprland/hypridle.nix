@@ -15,7 +15,7 @@
     settings = {
       general = {
         # Commande de verrouillage : ne pas lancer deux hyprlock en parallèle
-        lock_cmd    = "pidof hyprlock || hyprlock";
+        lock_cmd    = "pidof swaylock || /usr/bin/swaylock -f --image ~/.cache/current-wallpaper --scaling fill";
 
         # Avant la mise en veille système : verrouiller la session
         before_sleep_cmd = "loginctl lock-session";
