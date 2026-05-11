@@ -41,6 +41,9 @@
     # Polkit (authentification graphique)
     polkit_gnome         # agent polkit GTK
 
+    # Gestion écrans externes
+    nwg-displays         # GUI wlroots pour configurer moniteurs à la volée
+
     # Divers
     libnotify            # commande notify-send
     xdg-utils            # xdg-open etc.

@@ -8,7 +8,7 @@ La config Nix est entièrement déclarative sauf les étapes ci-dessous qui néc
 ## 1. Prérequis système (apt)
 
 ```bash
-sudo apt install swaylock
+sudo apt install swaylock blueman
 ```
 
 ---
@@ -96,7 +96,52 @@ hwmon-path = "/sys/class/hwmon/hwmon1/temp1_input";
 
 ---
 
-## 6. Vérification post-installation
+## 6. Gestion des écrans externes
+
+### GUI — nwg-displays (Super+D)
+Outil graphique dédié Hyprland/wlroots pour configurer les moniteurs à la volée.
+
+```bash
+nwg-displays   # ou Super+D depuis Hyprland
+```
+
+Permet de : étendre le bureau, dupliquer, désactiver un écran, choisir la résolution/fréquence, repositionner les moniteurs.
+
+---
+
+### Commandes rapides (terminal)
+
+#### Étendre à droite (mode bureau étendu)
+```bash
+hyprctl keyword monitor "HDMI-A-1, preferred, 2250x0, 1"
+```
+
+#### Dupliquer / Miroir
+```bash
+hyprctl keyword monitor "HDMI-A-1, preferred, 0x0, 1, mirror, eDP-1"
+```
+
+#### Désactiver l'écran externe
+```bash
+hyprctl keyword monitor "HDMI-A-1, disable"
+```
+
+#### Réactiver l'écran interne seul (si tu l'as désactivé)
+```bash
+hyprctl keyword monitor "eDP-1, 3000x1876@120, 0x0, 1.333333"
+```
+
+#### Lister les moniteurs connectés
+```bash
+hyprctl monitors
+wlr-randr       # alternative avec plus de détails sur les modes
+```
+
+> **Note :** Ces commandes sont temporaires (jusqu'à la prochaine session). Pour les rendre permanentes, modifie `monitor =` dans `dotfiles/hyprland/hyprland.conf`.
+
+---
+
+## 7. Vérification post-installation
 
 ```bash
 # Vérifier que le wrapper EGL fonctionne
@@ -111,7 +156,7 @@ systemctl --user status waybar hypridle
 
 ---
 
-## Résumé des fichiers hors Nix
+## 8. Résumé des fichiers hors Nix
 
 | Fichier | Méthode | Raison |
 |---|---|---|
