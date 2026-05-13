@@ -92,7 +92,7 @@
     unzip                      # Extraction ZIP
     zip                        # Création d'archives ZIP
     xterm                      # Terminal de secours
-    xpad                       # Post-it bureau
+    xfce.xfce4-notes-plugin       # Post-it bureau (remplace xpad)
     rofi                       # Lanceur d'applications
     libnotify                  # notify-send
 
@@ -312,5 +312,15 @@
     VISUAL       = "nvim";
     SUDO_EDITOR  = "nvim";
     XCURSOR_THEME = "Sweet-cursors";  # Thème curseur de ton .zshrc
+  };
+
+  # Rendre xfce4-notes visible dans wofi (OnlyShowIn=XFCE;GNOME; par défaut)
+  xdg.desktopEntries.xfce4-notes = {
+    name = "Notes";
+    exec = "xfce4-notes";
+    icon = "org.xfce.notes";
+    comment = "Sticky notes";
+    categories = [ "Utility" ];
+    terminal = false;
   };
 }
