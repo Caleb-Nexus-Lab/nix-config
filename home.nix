@@ -71,6 +71,7 @@
     cargo                      # Gestionnaire de paquets Rust
     rustc                      # Compilateur Rust
     python3                    # Python 3
+    nodejs                     # Node.js + npm (requis par Mason pour yamlls, pyright…)
     powershell                 # PowerShell (scripts cross-platform)
 
     # --- CONTENEURS ---
