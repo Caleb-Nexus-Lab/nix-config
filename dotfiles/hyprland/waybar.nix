@@ -20,8 +20,11 @@
       # -------------------------------------------------------------------------
       layer    = "top";      # au-dessus des fenêtres
       position = "top";
-      height   = 32;
-      spacing  = 4;
+      height   = 40;
+      spacing  = 0;
+      margin-top    = 6;
+      margin-left   = 10;
+      margin-right  = 10;
 
       # Modules à gauche
       modules-left = [
@@ -89,9 +92,9 @@
       };
 
       clock = {
-        timezone  = "Europe/Paris";
-        format    = " {:%H:%M}";
-        format-alt = " {:%A %d %B %Y}";
+        locale    = "C";
+        format    = "{:%H:%M}";
+        format-alt = "{:%A %d %B %Y}";
         tooltip-format = "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>";
         interval  = 60;
       };
