@@ -95,6 +95,7 @@ require("lazy").setup({
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "nil_ls", "yamlls" },
         automatic_installation = true,
+        automatic_enable = false,  -- vim.lsp.enable() n'existe que sur nvim 0.11+
       })
     end
   },
