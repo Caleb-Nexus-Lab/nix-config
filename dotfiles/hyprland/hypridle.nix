@@ -2,7 +2,8 @@
 # modules/hyprland/idle.nix
 #
 # hypridle — démon de gestion de l'inactivité.
-# Enchaîne : baisse luminosité → verrouillage → extinction écrans → veille.
+# Enchaîne : baisse luminosité → verrouillage → extinction écrans.
+# La mise en veille système est volontairement désactivée (driver WiFi instable).
 # =============================================================================
 
 { config, pkgs, lib, ... }:
@@ -44,11 +45,6 @@
           timeout    = 540;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume  = "hyprctl dispatch dpms on";
-        }
-        {
-          # Après 25 min : mise en veille système
-          timeout    = 1500;
-          on-timeout = "systemctl suspend";
         }
       ];
     };
