@@ -41,12 +41,15 @@
       # Modules à droite
       modules-right = [
         "backlight"
-        "bluetooth"
         "pulseaudio"
+        "custom/sep"
+        "bluetooth"
         "network"
+        "custom/sep"
         "cpu"
         "memory"
         "temperature"
+        "custom/sep"
         "battery"
         "tray"
         "custom/power"
@@ -186,6 +189,11 @@
         tooltip-format-connected = "{controller_alias}\n\n{device_enumerate}";
         tooltip-format-enumerate-connected = "  {device_alias}";
         on-click          = "/usr/bin/blueman-manager";
+      };
+
+      "custom/sep" = {
+        format  = "|";
+        tooltip = false;
       };
 
       "custom/power" = {
