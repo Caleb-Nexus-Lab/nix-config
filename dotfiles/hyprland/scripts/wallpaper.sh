@@ -8,7 +8,7 @@ sleep 1
 while true; do
     img=$(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \) | shuf -n 1)
     if [ -n "$img" ]; then
-        swww img "$img" --transition-type wipe --transition-duration 1
+        swww img "$img" --transition-type wipe --transition-duration 2
         ln -sf "$img" "$HOME/.cache/current-wallpaper"
     fi
     sleep "$INTERVAL"
