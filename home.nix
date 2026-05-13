@@ -285,8 +285,9 @@
     "tabby/config.yaml".source = ./dotfiles/tabby/config.yaml;
 
     # Neovim — init.lua géré ici plutôt qu'inline dans programs.neovim
-    "nvim/init.lua".source    = ./dotfiles/nvim/init.lua;
-    "nvim/lazy-lock.json".source = ./dotfiles/nvim/lazy-lock.json;
+    # lazy-lock.json n'est PAS géré ici : le symlink nix store est en lecture seule
+    # et lazy.nvim doit pouvoir l'écrire. Le fichier vit dans ~/.config/nvim/ directement.
+    "nvim/init.lua".source = ./dotfiles/nvim/init.lua;
   };
 
   # ============================================================
