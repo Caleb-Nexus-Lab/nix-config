@@ -35,6 +35,8 @@
     vivid                      # Générateur de thèmes LS_COLORS
     lsd                        # 'ls' moderne avec icônes
     bat                        # 'cat' avec coloration syntaxique
+    ripgrep                    # grep ultra-rapide (utilisé par nvim)
+    fd                         # find moderne et rapide
 
     # --- ÉDITEUR ---
 
@@ -53,6 +55,9 @@
     tio                        # Terminal série (remplace minicom)
     wget                       # Téléchargement HTTP/FTP
     curl                       # Requêtes HTTP CLI
+    mtr                        # traceroute + ping combiné
+    dogdns                     # DNS client moderne (remplace dig)
+    lsof                       # fichiers ouverts / ports par processus
 
     # --- MONITORING SYSTÈME ---
     btop                       # Moniteur système interactif (remplace htop)
@@ -84,6 +89,7 @@
 
     # --- UTILITAIRES SYSTÈME ---
     unzip                      # Extraction ZIP
+    zip                        # Création d'archives ZIP
     xterm                      # Terminal de secours
     xpad                       # Post-it bureau
     rofi                       # Lanceur d'applications

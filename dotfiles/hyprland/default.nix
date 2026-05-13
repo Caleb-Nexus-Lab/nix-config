@@ -30,6 +30,7 @@
     # Screenshots
     grim                 # capture d'écran Wayland
     slurp                # sélection de zone pour grim
+    satty                # annotation de screenshots
 
     # Utilitaires bureau
     swww                 # fond d'écran animé (alternative à hyprpaper)
@@ -89,6 +90,11 @@
 
   xdg.configFile."hypr/scripts/workspace-prev.sh" = {
     source = ./scripts/workspace-prev.sh;
+    executable = true;
+  };
+
+  xdg.configFile."hypr/scripts/screenshot.sh" = {
+    source = ./scripts/screenshot.sh;
     executable = true;
   };
 
